@@ -47,7 +47,7 @@ public class ContactFormData {
     if (telephone != null && telephone.length() != TELEPHONE_NUMBER_LENGTH) {
       errors.add(new ValidationError("telephone", "Telephone number must be in the format xxx-xxx-xxxx."));
     }
-    
+
     return errors.isEmpty() ? null : errors;
   }
 }
