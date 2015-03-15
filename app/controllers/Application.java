@@ -37,10 +37,16 @@ public class Application extends Controller {
    * @return The data from the form on the New Contact page.
    */
   public static Result postRequest() {
-    Form<views.formdata.ContactFormData> formData = Form.form(ContactFormData.class).bindFromRequest();
-    ContactFormData data = formData.get();
-    System.out.println("Data " + data.firstName + ", " + data.lastName + ", " + data.telephone);
-    return ok(NewContact.render(formData));
+    Form<ContactFormData> formData = Form.form(ContactFormData.class).bindFromRequest();
+    if (formData.hasErrors()) {
+      System.out.println("Found errors");
+      return badRequest(NewContact.render(formData));
+    }
+    else {
+      ContactFormData data = formData.get();
+      System.out.println("Data " + data.firstName + ", " + data.lastName + ", " + data.telephone);
+      return ok(NewContact.render(formData));
+    }
   }
 
 }
