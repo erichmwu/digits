@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class ContactFormData {
   private static final int TELEPHONE_NUMBER_LENGTH = 12;
+  private static final int ADDRESS_LENGTH = 24;
 
   /**
    * First name.
@@ -24,6 +25,10 @@ public class ContactFormData {
    * Telephone number.
    */
   public String telephone = "";
+  /**
+   * Address.
+   */
+  public String address = "";
   /**
    * Id number.
    */
@@ -46,6 +51,7 @@ public class ContactFormData {
     this.firstName = contact.getFirstName();
     this.lastName = contact.getLastName();
     this.telephone = contact.getTelephone();
+    this.address = contact.getAddress();
   }
 
   /**
@@ -70,6 +76,14 @@ public class ContactFormData {
 
     if (telephone != null && telephone.length() != TELEPHONE_NUMBER_LENGTH) {
       errors.add(new ValidationError("telephone", "Telephone number must be in the format xxx-xxx-xxxx."));
+    }
+
+    if (address == null || address.length() == 0) {
+      errors.add(new ValidationError("address", "Address is required."));
+    }
+
+    if (address != null && address.length() < ADDRESS_LENGTH) {
+      errors.add(new ValidationError("address", "Address must be at least 24 characters long."));
     }
 
     return errors.isEmpty() ? null : errors;

@@ -4,11 +4,12 @@
   <div class="container">
     <h1>Current Contacts</h1>
     <table class="table table-striped table-bordered">
-      <tr><th>First</th><th>Last</th><th>Phone</th></tr>
+      <tr><th>First</th><th>Last</th><th>Address</th><th>Phone</th></tr>
       @for(contact <- contacts) {
         <tr>
           <td>@contact.getFirstName</td>
           <td>@contact.getLastName</td>
+          <td>@contact.getAddress</td>
           <td>@contact.getTelephone</td>
           <td><a href="@routes.Application.newContact(contact.getId())">Edit</a></td>
         </tr>
