@@ -52,4 +52,13 @@ public class ContactDB {
     return new ArrayList<>(contacts.values());
   }
 
+  /**
+   * Deletes a contact based on the id.
+   *
+   * @param id The id.
+   */
+  public static void deleteContact(long id) {
+    contacts.remove(id);
+  }
+
 }

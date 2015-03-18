@@ -40,6 +40,14 @@ public class Application extends Controller {
     return ok(NewContact.render(formData));
   }
 
+  public static Result deleteContact(long id) {
+    ContactFormData data;
+    data = new ContactFormData(ContactDB.getContact(id));
+    ContactDB.deleteContact(id);
+    Form<ContactFormData> formData = Form.form(ContactFormData.class).fill(data);
+    return ok(Index.render(ContactDB.getContacts()));
+  }
+
   /**
    * Gets the form data from the New Contact page.
    *
@@ -58,5 +66,4 @@ public class Application extends Controller {
       return ok(NewContact.render(formData));
     }
   }
-
 }
