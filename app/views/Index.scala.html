@@ -10,8 +10,8 @@
           <td>@contact.getFirstName</td>
           <td>@contact.getLastName</td>
           <td>@contact.getTelephone</td>
-          <td><a href="@routes.Application.newContact(contact.getId())">Edit</a></td>
-          <td><a href="@routes.Application.deleteContact(contact.getId())">Delete</a> </td>
+          <td><a href="@routes.Application.newContact(contact.getId())" class="btn btn-default">Edit</a></td>
+          <td><a href="@routes.Application.deleteContact(contact.getId())" class="btn btn-default">Delete</a></td>
         </tr>
       }
     </table>
