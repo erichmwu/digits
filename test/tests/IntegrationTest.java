@@ -44,14 +44,15 @@ public class IntegrationTest {
         String firstName = "John";
         String lastName = "Doe";
         String telephone = "808-123-4567";
+        String telephoneType = "Mobile";
         browser.maximizeWindow();
         IndexPage indexPage = new IndexPage(browser.getDriver(), port);
         NewContactPage contactPage = new NewContactPage(browser.getDriver(), port);
         browser.goTo(contactPage);
         contactPage.isAt();
-        contactPage.createNewContact(firstName, lastName, telephone);
+        contactPage.createNewContact(firstName, lastName, telephone, telephoneType);
         browser.goTo(indexPage);
-        indexPage.hasContact(firstName, lastName, telephone);
+        indexPage.hasContact(firstName, lastName, telephone, telephoneType);
       }
     });
   }
