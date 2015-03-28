@@ -54,6 +54,21 @@ public class ContactFormData {
   }
 
   /**
+   * Creates default contacts during loading.
+   *
+   * @param firstName The first name.
+   * @param lastName The last name.
+   * @param telephone The telephone number.
+   * @param telephoneType The telephone type.
+   */
+  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.telephone = telephone;
+    this.telephoneType = telephoneType;
+  }
+
+  /**
    * Validate all fields that are empty and enforces 12 characters for the telephone number.
    *
    * @return null if all input is valid or a list of Validation Errors.
