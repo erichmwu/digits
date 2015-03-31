@@ -3,6 +3,7 @@ package views.formdata;
 import models.Contact;
 import play.data.validation.ValidationError;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public class ContactFormData {
   private static final int TELEPHONE_NUMBER_LENGTH = 12;
+  private static final int DIET_NUMBER_LENGTH = 5;
 
   /**
    * First name.
@@ -32,6 +34,10 @@ public class ContactFormData {
    * Telephone type.
    */
   public String telephoneType = "";
+  /**
+   * Diet types.
+   */
+  public ArrayList<String> dietTypes = new ArrayList<String>();
 
   /**
    * No-arg constructor.
@@ -51,6 +57,7 @@ public class ContactFormData {
     this.lastName = contact.getLastName();
     this.telephone = contact.getTelephone();
     this.telephoneType = contact.getTelephoneType();
+    this.dietTypes = contact.getDietTypes();
   }
 
   /**
@@ -61,11 +68,12 @@ public class ContactFormData {
    * @param telephone The telephone number.
    * @param telephoneType The telephone type.
    */
-  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType) {
+  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType, ArrayList<String> dietTypes) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
     this.telephoneType = telephoneType;
+    this.dietTypes = dietTypes;
   }
 
   /**
@@ -94,6 +102,14 @@ public class ContactFormData {
 
     if (!TelephoneTypes.isType(telephoneType)) {
       errors.add(new ValidationError("telephoneType", "Telephone type is not valid."));
+    }
+
+    if (dietTypes.size() > 0) {
+      for (String dietType : dietTypes) {
+        if (DietTypes.findDietTypes(dietType) == null) {
+          errors.add(new ValidationError("dietTypes", "Diet type is not valid."));
+        }
+      }
     }
 
     return errors.isEmpty() ? null : errors;

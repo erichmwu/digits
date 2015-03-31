@@ -26,7 +26,7 @@ public class ContactDB {
       idValue = ++currentIdValue;
     }
     Contact contact = new Contact(idValue, formData.firstName, formData.lastName,
-        formData.telephone, formData.telephoneType);
+        formData.telephone, formData.telephoneType, formData.dietTypes);
     contacts.put(idValue, contact);
   }
 
