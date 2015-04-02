@@ -6,10 +6,7 @@
 @Main("NewContact") {
   <div class="container">
   @form(action = routes.Application.postRequest(), 'class -> "form-horizontal") {
-    <input type="hidden"
-    name = "@contactForm("id").name"
-    id = "@contactForm("id").id"
-    value = "@contactForm("id").value">
+    @hidden(contactForm("id"))
 
     @text(contactForm("firstName"),
       label = "First",

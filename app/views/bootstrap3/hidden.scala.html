@@ -1,0 +1,7 @@
+@(idField: Field)
+
+<input type="hidden"
+id="@idField.id"
+name="@idField.name"
+value="@idField.value.getOrElse("")"
+/>
