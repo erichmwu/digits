@@ -1,4 +1,4 @@
-@(contactForm: Form[views.formdata.ContactFormData], telephoneTypeMap: Map[String, Boolean])
+@(contactForm: Form[views.formdata.ContactFormData], telephoneTypeMap: Map[String, Boolean], dietMap: Map[String, Boolean])
 
 @import helper._
 @import bootstrap3._
@@ -22,6 +22,10 @@
       contactForm("telephoneType"),
       isMultiple = false,
       optionMap = telephoneTypeMap)
+
+    @checkboxes(contactForm("dietTypes"),
+      label="Diet",
+      checkboxMap = dietMap)
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

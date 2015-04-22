@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 /**
  * Model for a contact for the database.
  */
@@ -9,6 +11,7 @@ public class Contact {
   private String telephone;
   private long id;
   private String telephoneType;
+  private ArrayList<String> dietTypes;
 
   /**
    * Creates an instance of a contact.
@@ -19,12 +22,13 @@ public class Contact {
    * @param telephone The telephone number.
    * @param telephoneType The telephone type.
    */
-  public Contact(long id, String firstName, String lastName, String telephone, String telephoneType) {
+  public Contact(long id, String firstName, String lastName, String telephone, String telephoneType, ArrayList<String> dietTypes) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
     this.telephoneType = telephoneType;
+    this.dietTypes = dietTypes;
   }
 
   /**
@@ -70,5 +74,32 @@ public class Contact {
    */
   public String getTelephoneType() {
     return telephoneType;
+  }
+
+  /**
+   * Returns the diet types.
+   *
+   * @return The diet types.
+   */
+  public ArrayList<String> getDietTypes() {
+    return dietTypes;
+  }
+
+  /**
+   * Returns the diet types.
+   *
+   * @return The diet types.
+   */
+  public String printDietTypes() {
+    StringBuilder sb = new StringBuilder();
+    for(int i = 0; i < dietTypes.size(); i++) {
+      if (i == dietTypes.size() - 1) {
+        sb.append(dietTypes.get(i));
+      }
+      else {
+        sb.append(dietTypes.get(i) + ", ");
+      }
+    }
+    return sb.toString();
   }
 }
