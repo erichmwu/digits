@@ -84,4 +84,22 @@ public class Contact {
   public ArrayList<String> getDietTypes() {
     return dietTypes;
   }
+
+  /**
+   * Returns the diet types.
+   *
+   * @return The diet types.
+   */
+  public String printDietTypes() {
+    StringBuilder sb = new StringBuilder();
+    for(int i = 0; i < dietTypes.size(); i++) {
+      if (i == dietTypes.size() - 1) {
+        sb.append(dietTypes.get(i));
+      }
+      else {
+        sb.append(dietTypes.get(i) + ", ");
+      }
+    }
+    return sb.toString();
+  }
 }

@@ -104,12 +104,8 @@ public class ContactFormData {
       errors.add(new ValidationError("telephoneType", "Telephone type is not valid."));
     }
 
-    if (dietTypes.size() > 0) {
-      for (String dietType : dietTypes) {
-        if (DietTypes.findDietTypes(dietType) == null) {
-          errors.add(new ValidationError("dietTypes", "Diet type is not valid."));
-        }
-      }
+    if (dietTypes.size() < 0 || dietTypes.size() > 5) {
+      errors.add(new ValidationError("dietType", "There can only be 5 diet types."));
     }
 
     return errors.isEmpty() ? null : errors;

@@ -62,5 +62,4 @@ public class DietTypes {
     return typeMap;
   }
 
-  public static
 }
