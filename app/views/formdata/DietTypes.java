@@ -2,6 +2,7 @@ package views.formdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +15,7 @@ public class DietTypes {
     dietTypes.add("Chicken");
     dietTypes.add("Fish");
     dietTypes.add("Beef");
-    dietTypes.add("Diary");
+    dietTypes.add("Dairy");
     dietTypes.add("Gluten");
   }
 
@@ -52,7 +53,7 @@ public class DietTypes {
    * @param types The type to be set to true.
    * @return A map of telephone types.
    */
-  public static Map<String, Boolean> getTypes(ArrayList<String> types) {
+  public static Map<String, Boolean> getTypes(List<String> types) {
     Map<String, Boolean> typeMap = getTypes();
     for (String type : types) {
       if (isType(type)) {

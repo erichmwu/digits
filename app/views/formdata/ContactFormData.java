@@ -3,7 +3,6 @@ package views.formdata;
 import models.Contact;
 import play.data.validation.ValidationError;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class ContactFormData {
   /**
    * Diet types.
    */
-  public ArrayList<String> dietTypes = new ArrayList<String>();
+  public List<String> dietTypes = new ArrayList<String>();
 
   /**
    * No-arg constructor.
@@ -56,8 +55,8 @@ public class ContactFormData {
     this.firstName = contact.getFirstName();
     this.lastName = contact.getLastName();
     this.telephone = contact.getTelephone();
-    this.telephoneType = contact.getTelephoneType();
-    this.dietTypes = contact.getDietTypes();
+    this.telephoneType = contact.getTelephoneType().getTelephoneType();
+    this.dietTypes = contact.getDietTypeList();
   }
 
   /**
@@ -67,8 +66,10 @@ public class ContactFormData {
    * @param lastName The last name.
    * @param telephone The telephone number.
    * @param telephoneType The telephone type.
+   * @param dietTypes The diet types.
    */
-  public ContactFormData(String firstName, String lastName, String telephone, String telephoneType, ArrayList<String> dietTypes) {
+  public ContactFormData(String firstName, String lastName, String telephone,
+                         String telephoneType, ArrayList<String> dietTypes) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
