@@ -1,37 +1,65 @@
 package models;
 
+import play.db.ebean.Model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Model for a contact for the database.
  */
-public class Contact {
+@Entity
+public class Contact extends Model {
   private String firstName;
   private String lastName;
   private String telephone;
+  @Id
   private long id;
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private TelephoneType telephoneType;
+  @ManyToMany(cascade = CascadeType.PERSIST)
   private List<DietType> dietTypes;
+
+  /**
+   * Creates an empty instance of a contact.
+   */
+  public Contact() {
+    this.firstName = "";
+    this.lastName = "";
+    this.telephone = "";
+    this.telephoneType = null;
+    this.dietTypes = null;
+  }
 
   /**
    * Creates an instance of a contact.
    *
-   * @param id The id.
    * @param firstName The first name.
    * @param lastName  The last name.
    * @param telephone The telephone number.
    * @param telephoneType The telephone type.
    * @param dietTypes The diet types.
    */
-  public Contact(long id, String firstName, String lastName, String telephone,
+  public Contact(String firstName, String lastName, String telephone,
                  TelephoneType telephoneType, List<DietType> dietTypes) {
-    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
     this.telephoneType = telephoneType;
     this.dietTypes = dietTypes;
+  }
+
+  /**
+   * The EBean ORM finder method for database queries.
+   * @return The finder method.
+   */
+  public static Finder<Long, Contact> find() {
+    return new Finder<Long, Contact>(Long.class, Contact.class);
   }
 
   /**
@@ -138,7 +166,7 @@ public class Contact {
    *
    * @param dietTypes The diet types.
    */
-  public void setDietTypes(ArrayList<DietType> dietTypes) {
+  public void setDietTypes(List<DietType> dietTypes) {
     this.dietTypes = dietTypes;
   }
 

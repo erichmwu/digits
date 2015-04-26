@@ -69,7 +69,7 @@ public class ContactFormData {
    * @param dietTypes The diet types.
    */
   public ContactFormData(String firstName, String lastName, String telephone,
-                         String telephoneType, ArrayList<String> dietTypes) {
+                         String telephoneType, List<String> dietTypes) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.telephone = telephone;
